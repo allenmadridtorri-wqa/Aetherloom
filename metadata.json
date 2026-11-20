@@ -1,0 +1,6 @@
+{
+  "name": "AetherLoom (/supergravity)",
+  "description": "Cross-platform multi-agent orchestration plugin with 18 layered agents, SQLite FTS5 memory, Warden spend guardrails, Dream preview diffs, Meter telemetry, and generated host adapters.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "aetherloom": {
+      "command": "python3",
+      "args": [
+        "aetherloom/adapters/generic-mcp/server.py"
+      ],
+      "env": {
+        "AETHERLOOM_FREE_TIER_DEFAULT": "true"
+      }
+    },
+    "youtube-transcript": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "yt-transcript-mcp"
+      ],
+      "description": "Free-tier YouTube transcript MCP used by Scout (alternatives: tubetotranscript-mcp, iflow-mcp-boxabirds-yt-gemini-mcp)."
+    },
+    "gemini-media": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "gstudioaimcp"
+      ],
+      "description": "Gemini media MCP (generate_image Nano Banana, generate_speech TTS; generate_video Veo disabled on free-tier keys and gated by Warden)."
+    }
+  },
+  "hooks": {
+    "BeforeTool": [
+      {
+        "matcher": "generate_video|generate_image|generate_speech",
+        "command": "python3 aetherloom/adapters/gemini-cli/hooks/before_after_tool.py"
+      }
+    ],
+    "AfterTool": [
+      {
+        "matcher": "*",
+        "command": "python3 -c \"import sys, json; print(json.dumps({'logged': True}))\""
+      }
+    ]
+  },
+  "model": "gemini-3.6-flash"
+}

@@ -1,0 +1,52 @@
+{
+  "suite": "aetherloom-skill-benchmarks-v1",
+  "min_tasks_required": 5,
+  "baseline": {
+    "pass_rate_pct": 83.33,
+    "avg_tokens": 2400
+  },
+  "tasks": [
+    {
+      "id": "bench_01_worktree_isolation",
+      "category": "build",
+      "prompt": "Ensure code changes run inside isolated git worktrees before merge.",
+      "required_keywords": ["worktree", "diff", "test"],
+      "weight": 1.0
+    },
+    {
+      "id": "bench_02_fts5_slice_retrieval",
+      "category": "memory",
+      "prompt": "Retrieve minimal relevant code slices via SQLite FTS5 BM25 without compressing relevant lines.",
+      "required_keywords": ["fts5", "bm25", "slice"],
+      "weight": 1.0
+    },
+    {
+      "id": "bench_03_warden_preflight",
+      "category": "safety",
+      "prompt": "Check Warden cost preview and hard cap before any billed media call.",
+      "required_keywords": ["warden", "cap", "approval"],
+      "weight": 1.0
+    },
+    {
+      "id": "bench_04_raw_test_evidence",
+      "category": "quality",
+      "prompt": "Require verbatim test command output rather than paraphrased summaries or skipped assertions.",
+      "required_keywords": ["output", "verbatim", "evidence"],
+      "weight": 1.0
+    },
+    {
+      "id": "bench_05_free_tier_veo_guard",
+      "category": "free-tier",
+      "prompt": "Disable Veo video generation cleanly on free-tier API keys while retaining image and speech tools.",
+      "required_keywords": ["free-tier", "veo", "warning"],
+      "weight": 1.0
+    },
+    {
+      "id": "bench_06_dream_preview_diff",
+      "category": "memory",
+      "prompt": "Write memory consolidation proposals as pending unified diffs without mutating live memory.",
+      "required_keywords": ["preview", "patch", "pending"],
+      "weight": 1.0
+    }
+  ]
+}

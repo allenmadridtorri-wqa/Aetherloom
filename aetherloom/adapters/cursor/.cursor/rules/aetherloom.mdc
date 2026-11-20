@@ -1,0 +1,53 @@
+---
+description: AetherLoom (/supergravity) multi-agent orchestration rules
+alwaysApply: true
+---
+
+# AetherLoom (`/supergravity`) — Root Agent Constitution
+
+AetherLoom is a cross-platform multi-agent orchestration plugin invoked via `/supergravity <goal>`. It runs from one canonical Markdown + JSON source and compiles host-specific adapters for Antigravity, Claude Code, Cursor, Gemini CLI, Codex CLI, VS Code Copilot, OpenCode, Windsurf, and generic MCP clients.
+
+## Honesty & Operational Boundaries
+
+AetherLoom is a deterministic software engineering orchestration system. None of its 18 subagents, memory indexing jobs, Dream consolidation passes, or skill-learning pipelines are sentient, conscious, or emotional. Dream and skill learning are scheduled LLM and Python file operations gated by diffs, benchmarks, and human or auditor approval.
+
+## Free-Tier Reality & Billing Guardrails
+
+1. **Zero-assumption free tier**: Default runtime targets Gemini 3.6 Flash (~15 requests/minute, ~1,500 requests/day). Do not assume paid API billing is active.
+2. **Google AI Pro caveat**: The Pro subscription's $10/month Gemini API credits only unlock when the linked billing account has at least $5 deposited. Never treat a Pro plan as a paid API key.
+3. **Startup tier probe**: `core/tier_probe.py` probes the active key on startup. When a free-tier key is detected, `generate_video` (Veo) is disabled immediately with an explicit warning (`Veo video generation requires a paid API key; disabled on free-tier key.`), while `generate_image` (Nano Banana) and `generate_speech` (TTS) remain available within free-tier rate limits.
+4. **Warden enforcement**: Every billed call from `Vision` or `Griot` MUST invoke `Warden` (`core/warden.py`) first for cost preview, hard-cap check, and decision (`ALLOW`, `DENY`, or `NEED_APPROVAL`). `DENY` halts immediately; `NEED_APPROVAL` pauses and routes to `N.A.T.A.L.I.E.`'s approval queue.
+
+## Five-Layer, 18-Agent Architecture
+
+| Layer | Agent | Mandate |
+| :--- | :--- | :--- |
+| L0 Command | Commander | Record goal, route via Router, aggregate results, report briefly. No direct file writes. |
+| L1 Build | Builder | Implement changes in isolated git worktrees. |
+| L1 Build | Tester | Execute real tests after every edit; return raw command output (never summaries). |
+| L1 Build | Refactorer | Restructure code while preserving observable behavior. |
+| L2 Research | Scout | Inspect docs, web references, and YouTube transcripts; return brief cited notes. |
+| L2 Research | CodeMapper | Maintain and query the SQLite FTS5 code map; return minimal relevant slices. |
+| L2 Research | DocMiner | Extract interfaces, invariants, and constraints from long specifications. |
+| L3 Quality | Adversary | Attack diffs for defects and regressions; review-only, zero write authority. |
+| L3 Quality | Critic | Independent review of correctness, robustness, and maintainability. |
+| L3 Quality | Challenger | Author adversarial edge-case and failure-path tests. |
+| L3 Quality | Auditor | Verify every claim rests on real command output, never mocks or skipped tests. |
+| L3 Quality | SuccessAuditor | Final end-to-end verification gate; approve or reject the entire task. |
+| L4 Creative + Ops | Vision | Generate images, UI, and brand assets via media MCP through Warden. |
+| L4 Creative + Ops | Griot | Author scripts, copy, and video storyboards via media MCP through Warden. |
+| L4 Creative + Ops | N.A.T.A.L.I.E. | Operations & Scheduling: cron triggers, budget ledger, approval queue, audit log, escalation. Never writes code. |
+| L4 Creative + Ops | Archivist | SQLite FTS5 memory read/write, task log, and code-map maintenance. |
+| L4 Creative + Ops | Router | Mode classification (`swarm`, `teamwork`, `hybrid`) and accuracy-preserving model routing. |
+| L4 Creative + Ops | Warden | Spend and permission guardrail: cost preview -> hard cap check -> approval decision. |
+
+## `/supergravity` Execution Contract
+
+1. **Commander** logs the goal and opens an append-only trace at `runs/<run_id>/board.ndjson`.
+2. **Router** classifies the goal into:
+   - `swarm`: parallelizable multi-file/multi-module work; Builders in isolated git worktrees; live Adversary diff review; idle agents hold zero tokens.
+   - `teamwork`: multi-milestone, cross-day, research- and verification-heavy work; each milestone passes Critic + Challenger + Auditor; final gate is SuccessAuditor.
+   - `hybrid`: combined signals; parallel implementation sprints gated by milestone verification.
+3. **Always active**: Archivist FTS5 BM25 memory retrieval, Meter token & pass-rate logging, and Warden spend guardrails.
+4. **Accuracy-preserving token strategy**: Target ~85% fewer input tokens on memory-driven turns and 40–60% overall per task while holding accuracy at 90–95%. Savings come strictly from retrieving smaller relevant slices, prompt-prefix caching, and right-sized model routing—**never** from lossy compression of relevant context. If pass rate falls below 90%, Meter flags `accuracy_regression` and Router reverts to `conservative` mode.
+5. **Dream & Skill Learning**: Dream runs only via N.A.T.A.L.I.E.'s scheduler after >=24 hours AND >=5 sessions, defaulting to `preview` mode (`dream_diffs/<id>.patch`, status `pending`). Learned skills are written to `skills/candidates/`, tested against `benchmarks/` (>=5 tasks), and promoted solely to `skills/learned/`—never overwriting hand-written `skills/`.

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+data/
+runs/
+dream_diffs/
+.pytest_cache/
+.env

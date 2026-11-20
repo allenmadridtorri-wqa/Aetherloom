@@ -1,0 +1,23 @@
+{
+  "generated_from": "manifest.json",
+  "environment_hooks": {
+    "before_tool_call": {
+      "match": [
+        "generate_video",
+        "generate_image",
+        "generate_speech"
+      ],
+      "command": "python3 aetherloom/adapters/claude-code/hooks/warden_hook.py",
+      "mode": "block_or_audit"
+    }
+  },
+  "scheduled_tasks": [
+    {
+      "name": "natalie-dream-check",
+      "owner": "N.A.T.A.L.I.E.",
+      "cron": "0 */6 * * *",
+      "command": "python3 -c \"from core.dream import DreamJob; print('Check >=24h and >=5 sessions in preview mode')\"",
+      "default_mode": "preview"
+    }
+  ]
+}

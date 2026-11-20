@@ -1,0 +1,8 @@
+--- memory/notes.before.txt
++++ memory/notes.proposed.txt
+@@ -1,4 +1,4 @@
+ [aetherloom] Warden checks cost preview and hard cap before any Vision or Griot media MCP call.
+ [aetherloom] Free-tier keys support Nano Banana generate_image and TTS generate_speech within ~15 RPM / ~1,500 RPD; Veo generate_video is disabled proactively to prevent BAD_REQUEST.
+ [aetherloom] SQLite FTS5 BM25 returns top-k minimal slices without compressing relevant code context.
+-[aetherloom] SQLite FTS5 BM25 returns top-k minimal slices without compressing relevant code context.
++[digest] Consolidated review of 6 sessions (sess_run_46d6db67, sess_seed_05, sess_seed_04, sess_seed_03, sess_seed_02).

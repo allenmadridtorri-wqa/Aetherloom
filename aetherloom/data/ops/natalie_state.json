@@ -1,0 +1,29 @@
+{
+  "spent_usd": 0.35,
+  "hard_cap_usd": 1.0,
+  "billed_agents_frozen": false,
+  "approval_queue": [
+    {
+      "id": "apr_fe110dae",
+      "agent": "Vision",
+      "tool": "generate_video",
+      "estimated_cost_usd": 0.35,
+      "reason": "Warden cost preview $0.35 for generate_video by Vision requires explicit approval before execution.",
+      "status": "pending",
+      "created_at": "2026-11-20T20:28:57.122834+00:00",
+      "decided_by": null,
+      "decided_at": null
+    },
+    {
+      "id": "apr_02cb53bc",
+      "agent": "Vision",
+      "tool": "generate_video",
+      "estimated_cost_usd": 0.35,
+      "reason": "Warden cost preview $0.35 for generate_video by Vision requires explicit approval before execution.",
+      "status": "approved",
+      "created_at": "2026-11-20T20:27:49.984534+00:00",
+      "decided_by": "user",
+      "decided_at": "2026-11-20T20:27:52.317421+00:00"
+    }
+  ]
+}

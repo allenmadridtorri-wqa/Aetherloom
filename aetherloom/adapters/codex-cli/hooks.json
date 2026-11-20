@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "before_tool": [
+      {
+        "matcher": "generate_video|generate_image|generate_speech",
+        "command": "python3 aetherloom/adapters/claude-code/hooks/warden_hook.py"
+      }
+    ]
+  }
+}

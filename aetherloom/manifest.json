@@ -1,0 +1,121 @@
+{
+  "name": "aetherloom",
+  "display_name": "AetherLoom",
+  "command": "/supergravity",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "description": "Cross-platform multi-agent orchestration plugin with 18 layered agents, SQLite FTS5 memory, accuracy-preserving token routing, Warden spend guardrails, propose-then-commit Dream consolidation, and benchmark-gated skill learning.",
+  "canonical_source": true,
+  "external_supergravity_dependency": false,
+  "sentience_disclaimer": "AetherLoom is a deterministic software orchestration framework. Subagents, Dream consolidation, and skill learning are scheduled LLM and script operations over local files; none are sentient, conscious, or emotional.",
+  "free_tier_policy": {
+    "default_model": "gemini-3.6-flash",
+    "rate_limits": {
+      "requests_per_minute": 15,
+      "requests_per_day": 1500
+    },
+    "pro_plan_credit_note": "Google AI Pro includes $10/month in Gemini API credits only when the API key billing account holds at least $5 of deposited funds. Never assume Pro alone unlocks paid APIs.",
+    "media_capabilities": {
+      "generate_image": {
+        "tool": "generate_image",
+        "backend": "Nano Banana",
+        "free_tier_supported": true,
+        "requires_warden": true
+      },
+      "generate_speech": {
+        "tool": "generate_speech",
+        "backend": "Gemini TTS",
+        "free_tier_supported": true,
+        "requires_warden": true
+      },
+      "generate_video": {
+        "tool": "generate_video",
+        "backend": "Veo",
+        "free_tier_supported": false,
+        "requires_warden": true,
+        "free_tier_behavior": "disable_with_warning"
+      }
+    }
+  },
+  "token_strategy": {
+    "memory_turn_input_savings_target_pct": 85,
+    "overall_task_savings_target_pct_range": [40, 60],
+    "pass_rate_floor_pct": 90,
+    "pass_rate_target_pct_range": [90, 95],
+    "never_compress_relevant_context": true,
+    "accuracy_regression_fallback": "conservative"
+  },
+  "safety_rails": {
+    "warden_hard_cap_usd": 0.0,
+    "warden_approval_threshold_usd": 0.0,
+    "dream_default_mode": "preview",
+    "dream_min_hours_since_last": 24,
+    "dream_min_sessions_since_last": 5,
+    "learned_skills_dir": "skills/learned",
+    "candidate_skills_dir": "skills/candidates",
+    "handwritten_skills_immutable": true,
+    "auto_delete_old_skills": false
+  },
+  "layers": {
+    "L0": { "name": "Command", "agents": ["commander"] },
+    "L1": { "name": "Build", "agents": ["builder", "tester", "refactorer"] },
+    "L2": { "name": "Research", "agents": ["scout", "codemapper", "docminer"] },
+    "L3": { "name": "Quality", "agents": ["adversary", "critic", "challenger", "auditor", "success_auditor"] },
+    "L4": { "name": "Creative + Ops", "agents": ["vision", "griot", "natalie", "archivist", "router", "warden"] }
+  },
+  "skills": [
+    "skills/supergravity/SKILL.md",
+    "skills/memory/SKILL.md",
+    "skills/dream/SKILL.md",
+    "skills/meter/SKILL.md",
+    "skills/skill-learning/SKILL.md"
+  ],
+  "agents": [
+    { "id": "commander", "name": "Commander", "layer": "L0", "file": "agents/commander.md", "can_write_code": false, "billed": false },
+    { "id": "builder", "name": "Builder", "layer": "L1", "file": "agents/builder.md", "can_write_code": true, "billed": false },
+    { "id": "tester", "name": "Tester", "layer": "L1", "file": "agents/tester.md", "can_write_code": false, "billed": false },
+    { "id": "refactorer", "name": "Refactorer", "layer": "L1", "file": "agents/refactorer.md", "can_write_code": true, "billed": false },
+    { "id": "scout", "name": "Scout", "layer": "L2", "file": "agents/scout.md", "can_write_code": false, "billed": false },
+    { "id": "codemapper", "name": "CodeMapper", "layer": "L2", "file": "agents/codemapper.md", "can_write_code": false, "billed": false },
+    { "id": "docminer", "name": "DocMiner", "layer": "L2", "file": "agents/docminer.md", "can_write_code": false, "billed": false },
+    { "id": "adversary", "name": "Adversary", "layer": "L3", "file": "agents/adversary.md", "can_write_code": false, "billed": false },
+    { "id": "critic", "name": "Critic", "layer": "L3", "file": "agents/critic.md", "can_write_code": false, "billed": false },
+    { "id": "challenger", "name": "Challenger", "layer": "L3", "file": "agents/challenger.md", "can_write_code": false, "billed": false },
+    { "id": "auditor", "name": "Auditor", "layer": "L3", "file": "agents/auditor.md", "can_write_code": false, "billed": false },
+    { "id": "success_auditor", "name": "SuccessAuditor", "layer": "L3", "file": "agents/success_auditor.md", "can_write_code": false, "billed": false },
+    { "id": "vision", "name": "Vision", "layer": "L4", "file": "agents/vision.md", "can_write_code": false, "billed": true },
+    { "id": "griot", "name": "Griot", "layer": "L4", "file": "agents/griot.md", "can_write_code": false, "billed": true },
+    { "id": "natalie", "name": "N.A.T.A.L.I.E.", "layer": "L4", "file": "agents/natalie.md", "can_write_code": false, "billed": false },
+    { "id": "archivist", "name": "Archivist", "layer": "L4", "file": "agents/archivist.md", "can_write_code": false, "billed": false },
+    { "id": "router", "name": "Router", "layer": "L4", "file": "agents/router.md", "can_write_code": false, "billed": false },
+    { "id": "warden", "name": "Warden", "layer": "L4", "file": "agents/warden.md", "can_write_code": false, "billed": false }
+  ],
+  "mcp_dependencies": {
+    "youtube_transcript": {
+      "recommended_servers": ["tubetotranscript-mcp", "yt-transcript-mcp", "iflow-mcp-boxabirds-yt-gemini-mcp"],
+      "used_by": ["scout"],
+      "free_tier": true
+    },
+    "gemini_media": {
+      "recommended_servers": ["gstudioaimcp"],
+      "tools": ["generate_image", "generate_video", "generate_speech"],
+      "used_by": ["vision", "griot"],
+      "free_tier_caveat": "generate_image (Nano Banana) and generate_speech (TTS) operate within free-tier rate limits. generate_video (Veo) returns BAD_REQUEST on free-tier keys and is disabled automatically unless a paid key is detected."
+    }
+  },
+  "mcp_server_tools": [
+    "memory.search",
+    "meter.record",
+    "warden.check",
+    "router.classify",
+    "supergravity.orchestrate"
+  ],
+  "adapter_targets": [
+    "antigravity",
+    "claude-code",
+    "cursor",
+    "gemini-cli",
+    "codex-cli",
+    "generic-mcp"
+  ]
+}

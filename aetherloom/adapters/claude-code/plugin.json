@@ -1,0 +1,37 @@
+{
+  "name": "aetherloom",
+  "version": "1.0.0",
+  "description": "Cross-platform multi-agent orchestration plugin with 18 layered agents, SQLite FTS5 memory, accuracy-preserving token routing, Warden spend guardrails, propose-then-commit Dream consolidation, and benchmark-gated skill learning.",
+  "commands": [
+    "commands/supergravity.md"
+  ],
+  "agents": [
+    "agents/commander.md",
+    "agents/builder.md",
+    "agents/tester.md",
+    "agents/refactorer.md",
+    "agents/scout.md",
+    "agents/codemapper.md",
+    "agents/docminer.md",
+    "agents/adversary.md",
+    "agents/critic.md",
+    "agents/challenger.md",
+    "agents/auditor.md",
+    "agents/success_auditor.md",
+    "agents/vision.md",
+    "agents/griot.md",
+    "agents/natalie.md",
+    "agents/archivist.md",
+    "agents/router.md",
+    "agents/warden.md"
+  ],
+  "mcpServers": ".mcp.json",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "generate_video|generate_image|generate_speech",
+        "command": "python3 hooks/warden_hook.py"
+      }
+    ]
+  }
+}
